@@ -1,11 +1,12 @@
 package br.com.alura.screenmatch.modelos;
 
+import br.com.alura.screenmatch.excecao.ConversaoDeAnoException;
 import com.google.gson.annotations.SerializedName;
 
 public class Titulo implements Comparable<Titulo> {
-    @SerializedName("Title")
+    //@SerializedName("Title") // Renomeia a variável abaixo para a biblioteca gson entender
     private String nome;
-    @SerializedName("Year")
+    //@SerializedName("Year")
     private int anoDeLancamento;
     private boolean incluidoNoPlano;
     private double somaDasAvaliacoes;
@@ -15,6 +16,17 @@ public class Titulo implements Comparable<Titulo> {
     public Titulo(String nome, int anoDeLancamento) {
         this.nome = nome;
         this.anoDeLancamento = anoDeLancamento;
+    }
+
+    //Constructor para receber um Titulo que venha da API OMDB
+    public Titulo(TituloOMDB meuTituloOMDB) {
+        this.nome = meuTituloOMDB.title();  //Recebe o nome do Titulo e passa para o title do record
+        if (meuTituloOMDB.year().length() > 4){ // IF para verificar a exception criada para o erro do atributo year
+            throw new ConversaoDeAnoException("A conversão não foi realizada pois o ano tem mais que 04 caracteres!");
+        }
+        this.anoDeLancamento = Integer.valueOf(meuTituloOMDB.year()); // Transforma o String year para um int, para receber o anoDeLancamento
+        this.duracaoEmMinutos = Integer.valueOf(meuTituloOMDB.runtime().substring(0, 2));
+        // Transforma o String runtime para int, e pega somente os 3 primeiros caracteres da String utilizando o .substirng(0,2)
     }
 
     public String getNome() {
@@ -74,6 +86,6 @@ public class Titulo implements Comparable<Titulo> {
 
     @Override
     public String toString() {
-        return "Nome: " + nome + " | Ano de Lançamento: " + anoDeLancamento;
+        return "[Nome: " + nome + " | Ano de Lançamento: " + anoDeLancamento + " | Duração: " + duracaoEmMinutos + " min]";
     }
 }

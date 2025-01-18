@@ -1,0 +1,26 @@
+[
+  {
+    "Nome": "Shrek",
+    "AnoDeLancamento": 2001,
+    "IncluidoNoPlano": false,
+    "SomaDasAvaliacoes": 0.0,
+    "TotalDeAvaliacoes": 0,
+    "DuracaoEmMinutos": 90
+  },
+  {
+    "Nome": "300",
+    "AnoDeLancamento": 2006,
+    "IncluidoNoPlano": false,
+    "SomaDasAvaliacoes": 0.0,
+    "TotalDeAvaliacoes": 0,
+    "DuracaoEmMinutos": 11
+  },
+  {
+    "Nome": "India: Matri Bhumi",
+    "AnoDeLancamento": 1959,
+    "IncluidoNoPlano": false,
+    "SomaDasAvaliacoes": 0.0,
+    "TotalDeAvaliacoes": 0,
+    "DuracaoEmMinutos": 90
+  }
+]
